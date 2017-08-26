@@ -1,0 +1,19 @@
+title: Zero[Z.W.T] Blog
+email: zerozwt1991@gmail.com
+description: ZeroZWT的个人博客，啥都写写，托管于GitHub.io。
+lang: zh_CN
+twitter_username: zerozwt
+github_username:  zerozwt
+
+# Minima date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+minima:
+  date_format: "%Y-%m-%d"
+
+paginate: 3
+
+# Build settings
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
