@@ -10,7 +10,10 @@ github_username:  zerozwt
 minima:
   date_format: "%Y-%m-%d"
 
-paginate: 3
+paginate: 10
+
+plugins:
+  - jekyll-feed
 
 # Build settings
 markdown: kramdown
