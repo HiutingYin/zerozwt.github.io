@@ -15,6 +15,8 @@ header_pages:
 
 paginate: 10
 
+lang: 'zh-CN'
+
 plugins:
   - jekyll-feed
 

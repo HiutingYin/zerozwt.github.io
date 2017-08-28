@@ -2,9 +2,12 @@ import os,os.path
 import shutil
 
 tags_map = {}
+archive_yaer = {}
 
 def file_stat(rel_path, file_name):
     print('parsing ' + rel_path + ' ...')
+    file_year = file_name.split('-')[0]
+    archive_yaer[file_year] = 1
     ff = open(rel_path, 'r')
     start = False
     for line in ff:
@@ -51,4 +54,25 @@ print('tags found : ' + ' '.join(tags_map.keys()))
 for tag in tags_map.keys():
     f = open('tags/' + tag + '.html', 'w')
     f.write(tag_pattern % (tag, tag, tag))
+    f.close()
+
+# generate archieve/*.html
+archive_pattern = '---\n'
+archive_pattern += 'layout: archive\n'
+archive_pattern += 'title: %s年的文章归档\n'
+archive_pattern += 'archive_year: "%s"\n'
+archive_pattern += 'permalink: /archive/%s/\n'
+archive_pattern += '---\n'
+
+try:
+    shutil.rmtree('archive')
+except FileNotFoundError:
+    pass
+os.mkdir('archive')
+
+print('archive years : ' + ' '.join(archive_yaer.keys()))
+
+for year in archive_yaer.keys():
+    f = open('archive/' + year + '.html', 'w')
+    f.write(archive_pattern % (year, year, year))
     f.close()
