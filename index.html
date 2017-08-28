@@ -3,47 +3,30 @@ layout: default
 ---
 
 <div class="home">
+  <div class="index-block">
+    <h1 class="page-heading">文章列表</h1>
+    <ul class="post-list">
+      {% for post in paginator.posts %}
+      {% include post_list_item.html post_item=post %}
+      {% endfor %}
+    </ul>
+    {% include paginate.html %}
+  </div>
 
-  <h1 class="page-heading">文章列表</h1>
-  
-  <ul class="post-list">
-    {% for post in paginator.posts %}
+  <div class="side-bar">
+    {% if site.tags.size > 0 %}
+      <span class="post-meta">TAGS:</span>
+      <ul>
+      {% for tag in site.tags %}
       <li>
-        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h2>
+        {% assign tn_tmp = tag | first %}
+        <a href="{% include tag_link.html tag_name = tn_tmp %}">{{ tag[0] | escape }}({{ tag[1].size }})</a>
       </li>
-    {% endfor %}
-  </ul>
-
-  {% if paginator.total_pages > 1 %}
-  <div class="pagination">
-    {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; 上一页</a>
-    {% else %}
-      <span>&laquo; 上一页</span>
+      {% endfor %}
+      </ul>
+      <div class="side-bar-delim"></div>
     {% endif %}
-    {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <em>{{ page }}</em>
-    {% elsif page == 1 %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-    {% else %}
-      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
-
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">下一页 &raquo;</a>
-  {% else %}
-    <span>下一页 &raquo;</span>
-  {% endif %}
-</div>
-{% endif %}
-
-<p class="rss-subscribe"><a href="{{ "/feed.xml" | relative_url }}">RSS订阅</a></p>
+    <p class="rss-subscribe"><a href="{{ "/feed.xml" | relative_url }}">RSS订阅</a></p>
+  </div>
 
 </div>

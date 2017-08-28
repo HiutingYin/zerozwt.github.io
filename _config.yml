@@ -10,6 +10,9 @@ github_username:  zerozwt
 minima:
   date_format: "%Y-%m-%d"
 
+header_pages:
+  - about.md
+
 paginate: 10
 
 plugins:
@@ -20,3 +23,4 @@ markdown: kramdown
 exclude:
   - Gemfile
   - Gemfile.lock
+  - gen_pages.py
