@@ -193,17 +193,31 @@ pre {
    max-width: #{$sidebar-width};
    float: right;
 
-   > ul {
-     list-style: none;
-     margin: 0;
-   }
-
    @include media-query($on-palm) {
-     float: none
+     max-width: 100%;
+     float: none;
    }
+ }
+ .side-bar-block {
+   float: none;
+   
+    > ul {
+      list-style: none;
+      margin: 0;
+    }
+   
+  @include media-query($on-palm) {
+    float: left;
+    width: 50%;
+  }
  }
  .side-bar-delim {
    border-bottom: 1px solid #e8e8e8
+ }
+ .side-bar:after {
+  content: "";
+  clear: both;
+  display: table;
  }
 
 /**
@@ -215,6 +229,7 @@ pre {
   float: left;
 
   @include media-query($on-palm) {
+    max-width: 100%;
     float: none;
   }
 }

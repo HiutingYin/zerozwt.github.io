@@ -1,5 +1,6 @@
 {% assign last_year = "" %}
 {% assign last_count = 0 %}
+<div class="side-bar-block">
 <span class="post-meta">ARCHIVE:</span>
 <ul>
 {% for post in site.posts %}
@@ -15,3 +16,4 @@
 {% if last_count > 0 %}<li><a href="{{ last_year | prepend: 'archive/' | append : '/' | relative_url }}">{{ last_year }}年归档({{ last_count }})</a></li>{% endif %}
 </ul>
 <div class="side-bar-delim"></div>
+</div>
