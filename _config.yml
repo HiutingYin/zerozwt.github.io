@@ -22,6 +22,10 @@ plugins:
 
 # Build settings
 markdown: kramdown
+
+kramdown:
+  input: GFM
+
 exclude:
   - Gemfile
   - Gemfile.lock
